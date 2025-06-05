@@ -1,0 +1,7 @@
+{
+  "name": "sumativa01",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
