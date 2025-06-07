@@ -24,11 +24,12 @@ export class LoginPage {
       return;
     }
 
-    const regexSoloNumeros = /^\d{4}$/;
-    if (!regexSoloNumeros.test(this.contrasena)) {
-      alert('La contraseña debe tener exactamente 4 dígitos numéricos');
+    const regexPassword = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    if (!regexPassword.test(this.contrasena)) {
+      alert('La contraseña debe tener al menos 6 caracteres, una mayúscula y un número');
       return;
     }
+
 
     console.log('usuario ->', this.usuario);
     console.log('contraseña ->', this.contrasena);
