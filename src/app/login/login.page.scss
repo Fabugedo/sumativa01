@@ -1,97 +1,88 @@
 .fondo-elegante {
-  --background: #c1cfd0; // Color exacto del fondo del logo
+  --background: #c1cfd0;
 }
 
 .logo-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 40px;
-  margin-bottom: 10px;
 }
 
-.logo-bohemia {
-  text-align: center;
-}
 .logo-bohemia img {
   width: 260px;
   max-width: 90%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  display: block;
-  margin-inline: auto;
 }
 
-.formulario-wrapper {
-  margin-top: 150px;
+.credenciales-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  animation: fadeIn 1s ease-out;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 12px;
 }
 
 .accede-sub {
-  font-size: 13px;
-  color: #666;
+  font-size: 14px;
+  color: #444;
+  margin: 0;
   text-align: center;
-  margin-bottom: 8px;
 }
 
 .form-wrapper {
   width: 100%;
-  max-width: 300px;
+  max-width: 300px; // MÁS ESTRECHO
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 200px; // MÁS SEPARACIÓN
+  margin-bottom: 40px;
 }
 
-ion-item {
-  --background: #f5f5f5;
-  border-radius: 10px;
-  padding-inline: 8px;
+/* Ajustes visuales del input */
+.campo-elegante::part(native) {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px; // MÁS SUTIL
+  padding: 4px 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.3s ease;
+  height: 46px; // MENOS ALTO
+}
+
+/* Foco elegante */
+.campo-elegante.ion-focused::part(native) {
+  box-shadow: 0 0 0 2px #bba08855;
 }
 
 ion-label,
 ion-input {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
+  color: #333;
 }
 
 .boton-login {
+  margin-top: 12px;
   --background: #bba088;
-  color: white;
   font-weight: 500;
   font-size: 15px;
   border-radius: 10px;
+  color: white;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
 
 .boton-login:hover {
-  filter: brightness(1.1);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-.boton-login:active {
-  transform: scale(0.98);
-  transition: transform 0.1s ease;
+  filter: brightness(1.05);
+  transform: translateY(-2px);
 }
 
-/* Animación fadeIn */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .registro-link {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 13px;
   text-align: center;
   color: #444;

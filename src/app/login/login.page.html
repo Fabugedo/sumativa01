@@ -6,26 +6,46 @@
     </div>
   </div>
 
-  <!-- Formulario -->
-  <div class="formulario-wrapper">
+  <!-- Animación + título -->
+  <div class="credenciales-container">
+    <lottie-player
+      src="assets/animacion/bohemia.json"
+      background="transparent"
+      speed="1"
+      style="width: 24px; height: 24px;"
+      loop
+      autoplay>
+    </lottie-player>
+
     <p class="accede-sub">Ingresa tus credenciales</p>
 
-    <div class="form-wrapper">
-      <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
+    <lottie-player
+      src="assets/animacion/bohemia.json"
+      background="transparent"
+      speed="1"
+      style="width: 24px; height: 24px;"
+      loop
+      autoplay>
+    </lottie-player>
+  </div>
 
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
+  <!-- Formulario -->
+  <div class="form-wrapper">
+    <ion-item lines="none" class="campo-elegante">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+    </ion-item>
 
-      <ion-button expand="block" class="boton-login">Iniciar Sesión</ion-button>
-      <p class="registro-link">
-        ¿No tienes cuenta?
-        <a routerLink="/registro">Regístrate aquí</a>
-      </p>
-    </div>
+    <ion-item lines="none" class="campo-elegante">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="boton-login" (click)="iniciarSesion()">Iniciar Sesión</ion-button>
+
+    <p class="registro-link">
+      ¿No tienes cuenta?
+      <a routerLink="/registro">Regístrate aquí</a>
+    </p>
   </div>
 </ion-content>
