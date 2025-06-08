@@ -34,6 +34,6 @@ export class LoginPage {
     console.log('usuario ->', this.usuario);
     console.log('contraseña ->', this.contrasena);
 
-    this.router.navigate(['/galeria']);
+    this.router.navigate(['/datos']);
   }
 }
