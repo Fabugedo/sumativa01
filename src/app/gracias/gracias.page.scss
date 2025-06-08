@@ -45,3 +45,15 @@
   width: 100%;
   max-width: 320px;
 }
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.logo-final {
+  width: 220px;
+  max-width: 90%;
+  height: auto;
+  opacity: 0.95;
+}
