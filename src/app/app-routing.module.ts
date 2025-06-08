@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'catalogo',
     loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+  },
+  {
+    path: 'confirmar-arriendo',
+    loadChildren: () => import('./confirmar-arriendo/confirmar-arriendo.module').then( m => m.ConfirmarArriendoPageModule)
   }
 ];
 

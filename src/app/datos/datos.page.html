@@ -40,13 +40,10 @@
 
     <ion-item>
       <ion-label>Estilo de tocado</ion-label>
-      <ion-select [(ngModel)]="estiloTocado" placeholder="Selecciona un estilo">
-        <ion-select-option value="clasico">Clásico</ion-select-option>
-        <ion-select-option value="romantico">Romántico</ion-select-option>
-        <ion-select-option value="floral">Floral</ion-select-option>
-        <ion-select-option value="perlas">Perlas</ion-select-option>
-        <ion-select-option value="dorado">Dorado</ion-select-option>
-        <ion-select-option value="plateado">Plateado</ion-select-option>
+      <ion-select [(ngModel)]="tocadoSeleccionado" placeholder="Selecciona un tocado">
+        <ion-select-option *ngFor="let tocado of tocadosDisponibles" [value]="tocado">
+          {{ tocado.nombre }} – ${{ tocado.valor }}
+        </ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -58,17 +55,19 @@
     <ion-item *ngIf="usarAros">
       <ion-label>Estilo de aros</ion-label>
       <ion-select [(ngModel)]="estiloAros" placeholder="Selecciona un estilo">
-        <ion-select-option value="perlas">Perlas</ion-select-option>
-        <ion-select-option value="hojas">Hojas</ion-select-option>
-        <ion-select-option value="cristal">Cristal</ion-select-option>
-        <ion-select-option value="florales">Florales</ion-select-option>
+        <ion-select-option value="perlas">Perlas – $18.000</ion-select-option>
+        <ion-select-option value="hojas">Hojas – $15.000</ion-select-option>
+        <ion-select-option value="cristal">Cristal – $16.000</ion-select-option>
+        <ion-select-option value="florales">Florales – $16.000</ion-select-option>
       </ion-select>
     </ion-item>
 
     <!-- Botones -->
     <div class="boton-wrapper">
-      <ion-button expand="block" class="boton-login" (click)="guardarDatos()">Guardar</ion-button>
-      <ion-button expand="block" class="boton-login" color="medium" (click)="volverLogin()">Volver al Login</ion-button>
+      <ion-button expand="block" class="boton-login" (click)="verCatalogo()">Ver Catálogo</ion-button>
+      <ion-button expand="block" class="boton-login" (click)="guardarDatos()">Guardar y continuar</ion-button>
+      <ion-button expand="block" class="boton-login" (click)="volverLogin()">Volver al Login</ion-button>
+
     </div>
 
     <!-- Imagen referencial -->
