@@ -10,12 +10,12 @@
 }
 
 .logo-bohemia img {
-  width: 280px;                // ✅ Aumentamos un poco el tamaño
+  width: 280px;
   max-width: 90%;
   height: auto;
   display: block;
-  margin: 0 auto;              // ✅ Centrado real
-  box-shadow: none;            // ❌ Quitamos sombra
+  margin: 0 auto;
+  box-shadow: none;
 }
 
 
@@ -24,9 +24,9 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  position: relative;      // ✅ Activamos posicionamiento relativo
-  top: 180px;               // ✅ Lo movemos visualmente hacia abajo
-  margin-bottom: 24px;     // puedes ajustar si quieres
+  position: relative;
+  top: 180px;
+  margin-bottom: 24px;
 }
 
 

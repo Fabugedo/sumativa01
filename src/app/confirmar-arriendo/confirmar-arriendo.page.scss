@@ -48,7 +48,7 @@
 }
 .boton-login {
   margin-top: 12px;
-  --background: var(--color-boton-bohemia); // ✅ color bohemia
+  --background: var(--color-boton-bohemia);
   font-family: var(--fuente-principal);
   font-weight: 500;
   font-size: 15px;
@@ -57,7 +57,7 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   width: 100%;
-  max-width: 260px; // 👈 más angosto y visualmente equilibrado
+  max-width: 260px;
 }
 
 .boton-login:hover {

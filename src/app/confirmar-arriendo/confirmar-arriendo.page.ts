@@ -14,7 +14,7 @@ export class ConfirmarArriendoPage {
   constructor(
     private datosService: DatosService,
     private navCtrl: NavController,
-    private loadingCtrl: LoadingController // ✅ Agregado aquí
+    private loadingCtrl: LoadingController
   ) {
     this.datos = this.datosService.getDatos();
   }
@@ -22,10 +22,10 @@ export class ConfirmarArriendoPage {
   async confirmarPago() {
     const loading = await this.loadingCtrl.create({
       message: 'Procesando arriendo...',
-      spinner: 'crescent', // ✅ La "luna girando"
-      duration: 2000,       // Se cerrará automáticamente tras 2 segundos
+      spinner: 'crescent', //recordar la animació
+      duration: 2000,      // el delay
       translucent: true,
-      cssClass: 'bohemia-loading' // (opcional, para estilizarlo más adelante)
+      cssClass: 'bohemia-loading'
     });
 
     await loading.present();
