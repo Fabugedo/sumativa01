@@ -97,3 +97,9 @@ ion-input {
     font-weight: 500;
   }
 }
+ion-content {
+  --background: var(--color-fondo-bohemia);
+  padding-top: 0 !important;
+  margin: 0 !important;
+  height: 100vh;
+}

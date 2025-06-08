@@ -1,0 +1,77 @@
+<ion-content class="fondo-elegante">
+  <!-- Encabezado decorativo -->
+  <div class="credenciales-container">
+    <lottie-player
+      src="assets/animacion/bohemia.json"
+      background="transparent"
+      speed="1"
+      style="width: 36px; height: 36px"
+      loop
+      autoplay>
+    </lottie-player>
+
+    <p class="accede-sub">Completa tus datos</p>
+
+    <lottie-player
+      src="assets/animacion/bohemia.json"
+      background="transparent"
+      speed="1"
+      style="width: 36px; height: 36px"
+      loop
+      autoplay>
+    </lottie-player>
+  </div>
+
+  <!-- Formulario -->
+  <div class="form-wrapper">
+    <ion-item>
+      <ion-label position="floating">Nombre de la novia</ion-label>
+      <ion-input [(ngModel)]="nombreNovia"></ion-input>
+    </ion-item>
+
+    <div class="mat-datepicker-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha del matrimonio</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fechaMatrimonio" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <ion-item>
+      <ion-label>Estilo de tocado</ion-label>
+      <ion-select [(ngModel)]="estiloTocado" placeholder="Selecciona un estilo">
+        <ion-select-option value="clasico">Clásico</ion-select-option>
+        <ion-select-option value="romantico">Romántico</ion-select-option>
+        <ion-select-option value="floral">Floral</ion-select-option>
+        <ion-select-option value="perlas">Perlas</ion-select-option>
+        <ion-select-option value="dorado">Dorado</ion-select-option>
+        <ion-select-option value="plateado">Plateado</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Deseas usar aros?</ion-label>
+      <ion-toggle [(ngModel)]="usarAros"></ion-toggle>
+    </ion-item>
+
+    <ion-item *ngIf="usarAros">
+      <ion-label>Estilo de aros</ion-label>
+      <ion-select [(ngModel)]="estiloAros" placeholder="Selecciona un estilo">
+        <ion-select-option value="perlas">Perlas</ion-select-option>
+        <ion-select-option value="hojas">Hojas</ion-select-option>
+        <ion-select-option value="cristal">Cristal</ion-select-option>
+        <ion-select-option value="florales">Florales</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Botones -->
+    <div class="boton-wrapper">
+      <ion-button expand="block" class="boton-login" (click)="guardarDatos()">Guardar</ion-button>
+      <ion-button expand="block" class="boton-login" color="medium" (click)="volverLogin()">Volver al Login</ion-button>
+    </div>
+
+    <!-- Imagen referencial -->
+    <img src="assets/images/ejemplo-tocado.jpeg" alt="Ejemplo tocado" class="imagen-ejemplo" />
+  </div>
+</ion-content>

@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'datos',
     loadChildren: () => import('./datos/datos.module').then(m => m.DatosPageModule)
+  },
+  {
+    path: 'catalogo',
+    loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
   }
 ];
 
