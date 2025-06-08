@@ -1,0 +1,47 @@
+.gracias-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 16px;
+  height: 100%;
+  gap: 16px;
+}
+
+.logo-final {
+  width: 220px;
+  opacity: 0.95;
+}
+
+.mensaje-final {
+  font-family: var(--fuente-principal);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.mensaje-sub {
+  font-family: var(--fuente-principal);
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 0;
+}
+
+.seguimiento {
+  font-family: var(--fuente-principal);
+  font-size: 14px;
+  color: #444;
+  margin-top: 0;
+}
+
+.info-contacto {
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  padding: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  max-width: 320px;
+}

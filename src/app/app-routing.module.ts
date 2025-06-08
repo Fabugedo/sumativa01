@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path: 'confirmar-arriendo',
     loadChildren: () => import('./confirmar-arriendo/confirmar-arriendo.module').then( m => m.ConfirmarArriendoPageModule)
+  },
+  {
+    path: 'gracias',
+    loadChildren: () => import('./gracias/gracias.module').then(m => m.GraciasPageModule)
   }
+
 ];
 
 @NgModule({

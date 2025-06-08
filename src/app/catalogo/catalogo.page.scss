@@ -1,0 +1,65 @@
+:host {
+  --ion-background-color: var(--color-fondo-bohemia);
+}
+
+.catalogo-container {
+  padding: 16px;
+}
+
+.titulo-catalogo {
+  text-align: center;
+  font-family: var(--fuente-principal);
+  font-size: 22px;
+  color: #4b4b4b;
+  margin-bottom: 20px;
+}
+
+ion-card.producto-card {
+  border-radius: 16px;
+  background-color: #f3f0ee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+ion-card img {
+  border-radius: 16px 16px 0 0;
+  object-fit: cover;
+  height: 180px;
+  width: 100%;
+}
+
+ion-card-title,
+ion-card-subtitle {
+  font-family: var(--fuente-principal);
+}
+
+.precio {
+  font-family: var(--fuente-principal);
+  font-weight: 500;
+  font-size: 16px;
+  color: #5a4030;
+  margin: 8px 0 0;
+}
+.boton-login {
+  --background: var(--color-boton-bohemia, #bba088);
+  font-family: var(--fuente-principal);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 20px;
+  color: white;
+  padding: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.2s ease;
+}
+
+.boton-login:hover {
+  transform: scale(1.02);
+}
+.boton-volver-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
