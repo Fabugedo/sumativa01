@@ -1,26 +1,24 @@
+<div class="page-banner">
+  <h1 class="banner-title">Bohemia Tocados y Accesorios</h1>
+</div>
 <ion-content class="fondo-elegante">
 
-  <div class="credenciales-container">
-    <lottie-player
-      src="assets/animacion/bohemia.json"
-      background="transparent"
-      speed="1"
-      style="width: 36px; height: 36px"
-      loop
-      autoplay>
-    </lottie-player>
 
-    <p class="accede-sub">Completa tus datos</p>
-
-    <lottie-player
-      src="assets/animacion/bohemia.json"
-      background="transparent"
-      speed="1"
-      style="width: 36px; height: 36px"
-      loop
-      autoplay>
-    </lottie-player>
+  <div class="datos-header">
+    <ion-icon name="diamond-outline"></ion-icon>
+    <h2>Completa tus datos</h2>
+    <ion-icon name="diamond-outline"></ion-icon>
   </div>
+
+
+  <lottie-player
+    src="assets/animacion/bohemia.json"
+    background="transparent"
+    speed="1"
+    loop
+    autoplay
+    class="datos-lottie">
+  </lottie-player>
 
 
   <div class="form-wrapper">
@@ -64,10 +62,15 @@
 
 
     <div class="boton-wrapper">
-      <ion-button expand="block" class="boton-login" (click)="verCatalogo()">Ver Catálogo</ion-button>
-      <ion-button expand="block" class="boton-login" (click)="guardarDatos()">Guardar y continuar</ion-button>
-      <ion-button expand="block" class="boton-login" (click)="volverLogin()">Volver al Login</ion-button>
-
+      <ion-button expand="block" color="bohemia" (click)="verCatalogo()">
+        Ver Catálogo
+      </ion-button>
+      <ion-button expand="block" color="bohemia" (click)="guardarDatos()">
+        Guardar y continuar
+      </ion-button>
+      <ion-button expand="block" color="bohemia" class="full" (click)="volverLogin()">
+        Volver al Login
+      </ion-button>
     </div>
 
 

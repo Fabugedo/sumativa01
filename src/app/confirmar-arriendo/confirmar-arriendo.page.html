@@ -1,3 +1,7 @@
+<div class="page-banner">
+  <h1 class="banner-title">Bohemia Tocados y Accesorios</h1>
+</div>
+
 <div class="form-wrapper">
   <ion-card class="resumen-card">
     <ion-card-header>
@@ -5,7 +9,7 @@
     </ion-card-header>
 
     <ion-card-content class="resumen-contenido">
-      <p><strong>Nombre:</strong> {{ datos.nombreNovia }}</p>
+      <p><strong>Nombre:</strong> {{ datos.nombreNovia }}</p> <!-- aca estamos guardando con objetos datos -->
       <p><strong>Fecha del matrimonio:</strong> {{ datos.fechaMatrimonio | date:'fullDate' }}</p>
       <hr />
       <p><strong>Tocado:</strong> {{ datos.tocado.nombre }}</p>
@@ -22,10 +26,15 @@
   </ion-card>
 
   <div class="boton-wrapper">
-    <ion-button expand="block" class="boton-login" (click)="confirmarPago()">Confirmar y pagar</ion-button>
-    <ion-button expand="block" class="boton-login" (click)="volverAtras()">Volver</ion-button>
-
+    <ion-button expand="block" color="bohemia" (click)="confirmarPago()">
+      Confirmar y pagar
+    </ion-button>
+    <ion-button expand="block" color="bohemia" (click)="volverAtras()">
+      Volver
+    </ion-button>
   </div>
+
+
   <div class="logo-wrapper">
     <div class="logo-bohemia">
       <img src="assets/images/logo-bohemia.jpg" alt="Logo Bohemia" />

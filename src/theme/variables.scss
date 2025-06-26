@@ -1,5 +1,12 @@
 :root {
-  --color-fondo-bohemia: #c1cfd0;
-  --color-boton-bohemia: #bba088;
-  --fuente-principal: 'Poppins', sans-serif;
+  --color-fondo-bohemia:   #c1cfd0;
+  --color-boton-bohemia:   #bba088;
+  --fuente-principal:      'Poppins', sans-serif;
+
+
+  --ion-color-bohemia:          var(--color-boton-bohemia);
+  --ion-color-bohemia-rgb:      187, 160, 136;
+  --ion-color-bohemia-contrast: #ffffff;
+  --ion-color-bohemia-shade:    #9d765d;
+  --ion-color-bohemia-tint:     #c99578;
 }

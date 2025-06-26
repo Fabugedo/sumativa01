@@ -57,3 +57,18 @@
   height: auto;
   opacity: 0.95;
 }
+.page-banner {
+  width: 100%;
+  background: var(--ion-color-bohemia-shade);
+  padding: 12px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+.banner-title {
+  margin: 0;
+  font-family: var(--fuente-principal);
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}

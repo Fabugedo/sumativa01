@@ -32,6 +32,26 @@ ion-app, ion-router-outlet, ion-content {
   border: none;
   box-shadow: none;
 }
+ion-button[color="bohemia"]::part(native) {
+
+  background: var(--ion-color-bohemia) !important;
+  color:      var(--ion-color-bohemia-contrast) !important;
+
+
+  border-radius: 10px;
+  box-shadow:    0 3px 8px rgba(0,0,0,0.1);
+  transition:    transform 0.2s ease, filter 0.2s ease;
+}
+
+ion-button[color="bohemia"]::part(native):hover {
+  filter:    brightness(1.05);
+  transform: translateY(-2px);
+}
+
+ion-button[color="bohemia"]::part(native):active {
+  transform: scale(0.97);
+}
+
 
 
 

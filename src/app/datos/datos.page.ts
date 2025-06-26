@@ -51,7 +51,7 @@ export class DatosPage {
     console.log('💰 Total estimado:', this.total);
 
 
-    this.datosService.setDatos({
+    this.datosService.setDatos({ //aca guardamos con el metodo de service
       nombreNovia: this.nombreNovia,
       fechaMatrimonio: this.fechaMatrimonio,
       tocado: this.tocadoSeleccionado,
