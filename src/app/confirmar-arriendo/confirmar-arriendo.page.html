@@ -1,45 +1,36 @@
-<div class="page-banner">
-  <h1 class="banner-title">Bohemia Tocados y Accesorios</h1>
-</div>
+<ion-content class="fondo-elegante push-content">
 
-<div class="form-wrapper">
-  <ion-card class="resumen-card">
-    <ion-card-header>
-      <ion-card-title class="resumen-titulo">Resumen de Arriendo</ion-card-title>
-    </ion-card-header>
+  <div class="form-wrapper">
+    <ion-card class="resumen-card">
+      <ion-card-header>
+        <ion-card-title class="resumen-titulo">Resumen de Arriendo</ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content class="resumen-contenido">
-      <p><strong>Nombre:</strong> {{ datos.nombreNovia }}</p> <!-- aca estamos guardando con objetos datos -->
-      <p><strong>Fecha del matrimonio:</strong> {{ datos.fechaMatrimonio | date:'fullDate' }}</p>
-      <hr />
-      <p><strong>Tocado:</strong> {{ datos.tocado.nombre }}</p>
-      <p><strong>Precio tocado:</strong> ${{ datos.tocado.valor | number }}</p>
-      <ng-container *ngIf="datos.usarAros">
-        <p><strong>Aros:</strong> {{ datos.estiloAros | titlecase }}</p>
-        <p><strong>Precio aros:</strong> ${{ datos.precioAros | number }}</p>
-      </ng-container>
+      <ion-card-content class="resumen-contenido">
+        <p><strong>Nombre:</strong> {{ datos.nombreNovia }}</p>
+        <p><strong>Fecha del matrimonio:</strong> {{ datos.fechaMatrimonio | date:'fullDate' }}</p>
+        <hr />
+        <p><strong>Tocado:</strong> {{ datos.tocado.nombre }}</p>
+        <p><strong>Precio tocado:</strong> ${{ datos.tocado.valor | number }}</p>
+        <ng-container *ngIf="datos.usarAros">
+          <p><strong>Aros:</strong> {{ datos.estiloAros | titlecase }}</p>
+          <p><strong>Precio aros:</strong> ${{ datos.precioAros | number }}</p>
+        </ng-container>
+        <hr />
+        <p class="resumen-total"><strong>Total a pagar:</strong> ${{ datos.total | number }}</p>
+      </ion-card-content>
+    </ion-card>
 
-      <hr />
+    <div class="boton-wrapper">
+      <ion-button expand="block" color="bohemia" (click)="confirmarPago()">Confirmar y pagar</ion-button>
+      <ion-button expand="block" color="bohemia" (click)="volverAtras()">Volver</ion-button>
+    </div>
 
-      <p class="resumen-total"><strong>Total a pagar:</strong> ${{ datos.total | number }}</p>
-    </ion-card-content>
-  </ion-card>
-
-  <div class="boton-wrapper">
-    <ion-button expand="block" color="bohemia" (click)="confirmarPago()">
-      Confirmar y pagar
-    </ion-button>
-    <ion-button expand="block" color="bohemia" (click)="volverAtras()">
-      Volver
-    </ion-button>
-  </div>
-
-
-  <div class="logo-wrapper">
-    <div class="logo-bohemia">
-      <img src="assets/images/logo-bohemia.jpg" alt="Logo Bohemia" />
+    <div class="logo-wrapper">
+      <div class="logo-bohemia">
+        <img src="assets/images/logo-bohemia.jpg" alt="Logo Bohemia" />
+      </div>
     </div>
   </div>
 
-
-</div>
+</ion-content>

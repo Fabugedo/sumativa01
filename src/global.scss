@@ -51,6 +51,29 @@ ion-button[color="bohemia"]::part(native):hover {
 ion-button[color="bohemia"]::part(native):active {
   transform: scale(0.97);
 }
+ion-app, ion-router-outlet, ion-content {
+  padding-top: env(safe-area-inset-top);
+}
+ion-toolbar[color="bohemia"] {
+
+  --background: var(--ion-color-bohemia) !important;
+
+  --ion-toolbar-background: var(--ion-color-bohemia) !important;
+}
+/* global.scss */
+.page-banner {
+  padding-top:   env(safe-area-inset-top);
+  background:    var(--ion-color-bohemia) !important;
+  color:         var(--ion-color-bohemia-contrast);
+  font-family:   var(--fuente-principal);
+  font-size:     18px;
+  font-weight:   600;
+  text-align:    center;
+  padding-bottom:12px;
+  position:      sticky;
+  top:           0;
+  z-index:       100;
+}
 
 
 

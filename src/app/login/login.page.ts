@@ -14,26 +14,10 @@ export class LoginPage {
   constructor(private router: Router) {}
 
   iniciarSesion() {
-    if (!this.usuario || !this.contrasena) {
-      alert('Por favor completa ambos campos');
-      return;
-    }
-
-    if (this.usuario.length < 3 || this.usuario.length > 8) {
-      alert('El usuario debe tener entre 3 y 8 caracteres');
-      return;
-    }
-
-    const regexPassword = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
-    if (!regexPassword.test(this.contrasena)) {
-      alert('La contraseña debe tener al menos 6 caracteres, una mayúscula y un número');
-      return;
-    }
-
-
+    // Con el form invalid deshabilitado, ya sabes que usuario y pass cumplen pattern
     console.log('usuario ->', this.usuario);
     console.log('contraseña ->', this.contrasena);
-
     this.router.navigate(['/datos']);
   }
+
 }

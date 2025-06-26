@@ -6,14 +6,12 @@
     </div>
   </div>
 
-
   <div class="credenciales-container">
     <lottie-player
       src="assets/animacion/bohemia.json"
       background="transparent"
       speed="1"
       style="width: 24px; height: 24px;"
-
       loop
       autoplay>
     </lottie-player>
@@ -30,26 +28,63 @@
     </lottie-player>
   </div>
 
-
-  <div class="form-wrapper">
+  <!-- Agregamos la clase form-wrapper para el gap -->
+  <form
+    #loginForm="ngForm"
+    class="form-wrapper"
+    (ngSubmit)="iniciarSesion()"
+  >
     <ion-item lines="none" class="campo-elegante">
       <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+      <ion-input
+        type="text"
+        name="usuario"
+        [(ngModel)]="usuario"
+        #u="ngModel"
+        required
+        minlength="3"
+        maxlength="8"
+      ></ion-input>
     </ion-item>
+    <ion-note color="danger" *ngIf="u.touched && u.errors?.['required']">
+      El usuario es obligatorio.
+    </ion-note>
+    <ion-note color="danger" *ngIf="u.touched && (u.errors?.['minlength'] || u.errors?.['maxlength'])">
+      Debe tener entre 3 y 8 caracteres.
+    </ion-note>
 
     <ion-item lines="none" class="campo-elegante">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+      <ion-input
+        type="password"
+        name="contrasena"
+        [(ngModel)]="contrasena"
+        #p="ngModel"
+        required
+        pattern="^(?=.*[A-Z])(?=.*\d).{6,}$"
+      ></ion-input>
     </ion-item>
+    <ion-note color="danger" *ngIf="p.touched && p.errors?.['required']">
+      La contraseña es obligatoria.
+    </ion-note>
+    <ion-note color="danger" *ngIf="p.touched && p.errors?.['pattern']">
+      Debe tener ≥6 caracteres, 1 mayúscula y 1 número.
+    </ion-note>
 
-    <ion-button expand="block" color="bohemia" (click)="iniciarSesion()">
-      Iniciar Sesión
-    </ion-button>
-
+    <div class="boton-wrapper">
+      <ion-button
+        expand="block"
+        color="bohemia"
+        [disabled]="loginForm.invalid"
+        type="submit"
+      >
+        Iniciar Sesión
+      </ion-button>
+    </div>
 
     <p class="registro-link">
       ¿No tienes cuenta?
       <a routerLink="/registro">Regístrate aquí</a>
     </p>
-  </div>
+  </form>
 </ion-content>
