@@ -1,7 +1,11 @@
 {
   "name": "sumativa01",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
+  "type": "angular",
+  "integrations": { "capacitor": {} },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://10.0.2.2:3000"
+    }
+  ]
 }

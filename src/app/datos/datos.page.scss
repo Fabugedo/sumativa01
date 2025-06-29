@@ -128,10 +128,8 @@
 }
 .push-content {
 
-  --padding-top: calc(
-    env(safe-area-inset-top)
-    + 18px
-    + 12px
-    + 16px
-  );
+
+.header-elegante {
+  padding-top: env(safe-area-inset-top);
+ }
 }

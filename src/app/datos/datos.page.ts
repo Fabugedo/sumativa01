@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { DatosService } from '../services/datos.service';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-datos',
@@ -21,7 +21,7 @@ export class DatosPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private navCtrl: NavController,
-    private datosService: DatosService
+    private databaseService: DatabaseService // <-- INYECTA TU SERVICE DE CRUD
   ) {}
 
   ngOnInit() {
@@ -32,7 +32,6 @@ export class DatosPage implements OnInit {
       usarAros:        [false],
       estiloAros:      [{ value: null, disabled: true }, []]
     });
-
 
     this.datosForm.get('usarAros')!.valueChanges.subscribe(usando => {
       const ctrl = this.datosForm.get('estiloAros')!;
@@ -47,7 +46,6 @@ export class DatosPage implements OnInit {
     });
   }
 
-
   fechaNoPasada(control: AbstractControl) {
     const f = control.value as Date;
     const hoy = new Date();
@@ -55,7 +53,7 @@ export class DatosPage implements OnInit {
     return f && f < hoy ? { pasada: true } : null;
   }
 
-  guardarDatos() {
+  async guardarDatos() {
     if (this.datosForm.invalid) {
       this.datosForm.markAllAsTouched();
       return;
@@ -66,17 +64,24 @@ export class DatosPage implements OnInit {
     const precioAros   = vals.usarAros ? this.obtenerPrecioAros(vals.estiloAros) : 0;
     const total        = precioTocado + precioAros;
 
-    this.datosService.setDatos({
-      nombreNovia:     vals.nombreNovia,
-      fechaMatrimonio: vals.fechaMatrimonio,
-      tocado:          vals.tocado,
-      usarAros:        vals.usarAros,
-      estiloAros:      vals.estiloAros,
-      precioAros,
+    // --- ARMAR OBJETO RESERVA CON LOS NOMBRES QUE ESPERA LA BD ---
+    const reserva = {
+      nombreNovia: vals.nombreNovia,
+      fechaBoda: vals.fechaMatrimonio, // Debe coincidir con el campo de tu tabla
+      tipoTocado: vals.tocado ? vals.tocado.nombre : '',
+      coords: '', // Puedes integrar después
+      foto: '',   // Puedes integrar después
       total
-    });
+    };
 
-    this.navCtrl.navigateForward('/confirmar-arriendo');
+    try {
+      await this.databaseService.addReserva(reserva);
+      this.datosForm.reset(); // Limpia el formulario si quieres permitir múltiples reservas
+      this.navCtrl.navigateForward('/mis-reservas');
+    } catch (error) {
+      console.error('Error guardando reserva:', error);
+      // Aquí podrías mostrar un toast con el error si lo deseas
+    }
   }
 
   verCatalogo(): void {
@@ -86,7 +91,6 @@ export class DatosPage implements OnInit {
   volverLogin(): void {
     this.navCtrl.navigateBack('/login');
   }
-
 
   private obtenerPrecioAros(estilo: string): number {
     switch (estilo) {

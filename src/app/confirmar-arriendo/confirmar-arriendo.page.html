@@ -1,36 +1,71 @@
-<ion-content class="fondo-elegante push-content">
+<ion-header>
+  <ion-toolbar color="bohemia" class="header-elegante">
+    <ion-title class="titulo-bohemia">
+      Bohemia Tocados y Accesorios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div class="form-wrapper">
-    <ion-card class="resumen-card">
-      <ion-card-header>
-        <ion-card-title class="resumen-titulo">Resumen de Arriendo</ion-card-title>
-      </ion-card-header>
+<ion-content class="fondo-elegante">
+  <div class="ion-padding">
 
-      <ion-card-content class="resumen-contenido">
-        <p><strong>Nombre:</strong> {{ datos.nombreNovia }}</p>
-        <p><strong>Fecha del matrimonio:</strong> {{ datos.fechaMatrimonio | date:'fullDate' }}</p>
-        <hr />
-        <p><strong>Tocado:</strong> {{ datos.tocado.nombre }}</p>
-        <p><strong>Precio tocado:</strong> ${{ datos.tocado.valor | number }}</p>
-        <ng-container *ngIf="datos.usarAros">
-          <p><strong>Aros:</strong> {{ datos.estiloAros | titlecase }}</p>
-          <p><strong>Precio aros:</strong> ${{ datos.precioAros | number }}</p>
-        </ng-container>
-        <hr />
-        <p class="resumen-total"><strong>Total a pagar:</strong> ${{ datos.total | number }}</p>
-      </ion-card-content>
-    </ion-card>
+    <h2 class="titulo-pagina">Confirmar Arriendo</h2>
 
-    <div class="boton-wrapper">
-      <ion-button expand="block" color="bohemia" (click)="confirmarPago()">Confirmar y pagar</ion-button>
-      <ion-button expand="block" color="bohemia" (click)="volverAtras()">Volver</ion-button>
+    <!-- Resumen de datos -->
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <h3>Nombre</h3>
+          <p>{{ datos.nombreNovia }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>Fecha Matrimonio</h3>
+          <p>{{ datos.fechaMatrimonio | date }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>Tocado</h3>
+          <p>{{ datos.tocado.nombre }} - ${{ datos.tocado.valor }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>Total</h3>
+          <p>${{ datos.total }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botones funcionales (tu lógica aquí) -->
+    <ion-button expand="block" (click)="loadLocation()">
+      Obtener mi ubicación
+    </ion-button>
+
+    <div *ngIf="coords" class="ion-text-center">
+      <p>Lat: {{ coords.lat.toFixed(4) }}, Lng: {{ coords.lng.toFixed(4) }}</p>
+      <div id="map" style="width:100%; height:200px; margin:1em 0;"></div>
     </div>
 
-    <div class="logo-wrapper">
-      <div class="logo-bohemia">
-        <img src="assets/images/logo-bohemia.jpg" alt="Logo Bohemia" />
-      </div>
+    <ion-button expand="block" (click)="takePhoto()">
+      Tomar foto de seguridad
+    </ion-button>
+    <div *ngIf="photoBase64" class="ion-text-center">
+      <img [src]="'data:image/jpeg;base64,' + photoBase64" />
     </div>
+
+    <ion-button
+      expand="block"
+      color="bohemia"
+      [disabled]="isLoading"
+      (click)="confirmarPago()">
+      {{ isLoading ? 'Procesando...' : 'Confirmar Arriendo' }}
+    </ion-button>
+
+    <ion-button expand="block" fill="outline" (click)="volverAtras()">
+      Volver
+    </ion-button>
   </div>
-
 </ion-content>
