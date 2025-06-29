@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'gracias',
     loadChildren: () => import('./gracias/gracias.module').then(m => m.GraciasPageModule)
+  },
+  {
+    path: 'mis-reservas',
+    loadChildren: () => import('./mis-reservas/mis-reservas.module').then( m => m.MisReservasPageModule)
   }
 
 ];
