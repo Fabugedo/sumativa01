@@ -8,10 +8,7 @@
 
 <ion-content class="fondo-elegante">
   <div class="ion-padding">
-
     <h2 class="titulo-pagina">Confirmar Arriendo</h2>
-
-    <!-- Resumen de datos -->
     <ion-list>
       <ion-item>
         <ion-label>
@@ -22,13 +19,13 @@
       <ion-item>
         <ion-label>
           <h3>Fecha Matrimonio</h3>
-          <p>{{ datos.fechaMatrimonio | date }}</p>
+          <p>{{ datos.fechaBoda | date:'longDate' }}</p>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h3>Tocado</h3>
-          <p>{{ datos.tocado.nombre }} - ${{ datos.tocado.valor }}</p>
+          <p>{{ datos.tipoTocado }} <span *ngIf="datos.tipoAro">+ {{ datos.tipoAro }}</span></p>
         </ion-label>
       </ion-item>
       <ion-item>
@@ -39,12 +36,12 @@
       </ion-item>
     </ion-list>
 
-    <!-- Botones funcionales (tu lógica aquí) -->
     <ion-button expand="block" (click)="loadLocation()">
-      Obtener mi ubicación
+      Obtener dirección de entrega
     </ion-button>
-
-    <div *ngIf="coords" class="ion-text-center">
+    <p *ngIf="errorUbicacion" class="ion-text-center" style="color:red;">{{ errorUbicacion }}</p>
+    <p class="justificacion">Tu ubicación nos ayuda a coordinar la entrega de tu pedido de forma segura y personalizada.</p>
+    <div *ngIf="coords.lat && coords.lng" class="ion-text-center">
       <p>Lat: {{ coords.lat.toFixed(4) }}, Lng: {{ coords.lng.toFixed(4) }}</p>
       <div id="map" style="width:100%; height:200px; margin:1em 0;"></div>
     </div>
@@ -52,8 +49,11 @@
     <ion-button expand="block" (click)="takePhoto()">
       Tomar foto de seguridad
     </ion-button>
+    <p class="justificacion">
+      Usaremos la foto para validar la identidad y asegurar la entrega del tocado.
+    </p>
     <div *ngIf="photoBase64" class="ion-text-center">
-      <img [src]="'data:image/jpeg;base64,' + photoBase64" />
+      <img [src]="photoBase64" style="max-width:90%;max-height:250px;border-radius:12px;margin:0.7em auto;" />
     </div>
 
     <ion-button

@@ -11,31 +11,39 @@ export class DatabaseService {
     this.db = await this.sqlite.createConnection('tocadosDB', false, 'no-encryption', 1, false);
     await this.db.open();
 
+
+
     await this.db.execute(`
-      CREATE TABLE IF NOT EXISTS reservas (
-                                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                            nombreNovia TEXT,
-                                            fechaBoda TEXT,
-                                            tipoTocado TEXT,
-                                            coords TEXT,
-                                            foto TEXT,
-                                            total REAL,
-                                            enviado INTEGER DEFAULT 0
+      DROP TABLE IF EXISTS reservas;
+
+      CREATE TABLE reservas (
+                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+                              nombreNovia TEXT,
+                              email TEXT,
+                              fechaBoda TEXT,
+                              tipoTocado TEXT,
+                              tipoAro TEXT, -- nuevo campo
+                              coords TEXT,
+                              foto TEXT,
+                              total REAL,
+                              enviado INTEGER DEFAULT 0
       );
     `);
   }
 
   async addReserva(reserva: any) {
     const query = `
-      INSERT INTO reservas (nombreNovia, fechaBoda, tipoTocado, coords, foto, total)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO reservas (nombreNovia, email, fechaBoda, tipoTocado, tipoAro, coords, foto, total)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [
       reserva.nombreNovia,
+      reserva.email,
       reserva.fechaBoda,
       reserva.tipoTocado,
+      reserva.tipoAro || null,
       JSON.stringify(reserva.coords),
-      reserva.photo,
+      reserva.foto,
       reserva.total
     ];
     await this.db.run(query, values);
@@ -55,4 +63,24 @@ export class DatabaseService {
     const query = 'UPDATE reservas SET enviado = 1 WHERE id = ?';
     await this.db.run(query, [id]);
   }
+  async updateReserva(reserva: any) {
+    const query = `
+    UPDATE reservas
+    SET nombreNovia = ?, fechaBoda = ?
+    WHERE id = ?
+  `;
+    const values = [reserva.nombreNovia, reserva.fechaBoda, reserva.id];
+    await this.db.run(query, values);
+  }
+  async updateReservaNombre(reserva: any) {
+    const query = `
+    UPDATE reservas
+    SET nombreNovia = ?
+    WHERE id = ?
+  `;
+    const values = [reserva.nombreNovia, reserva.id];
+    await this.db.run(query, values);
+  }
+
+
 }

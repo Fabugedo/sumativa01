@@ -26,6 +26,7 @@
 
   <!-- Formulario reactivo -->
   <form [formGroup]="datosForm" (ngSubmit)="guardarDatos()">
+
     <!-- Nombre -->
     <ion-item>
       <ion-label position="floating">Nombre de la novia</ion-label>
@@ -38,6 +39,20 @@
     <ion-note color="danger"
               *ngIf="datosForm.get('nombreNovia')?.touched && datosForm.get('nombreNovia')?.errors?.['minlength']">
       Mínimo 3 caracteres.
+    </ion-note>
+
+    <!-- Email -->
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-note color="danger"
+              *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['required']">
+      El correo es obligatorio.
+    </ion-note>
+    <ion-note color="danger"
+              *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['email']">
+      Ingresa un correo válido.
     </ion-note>
 
     <!-- Fecha -->

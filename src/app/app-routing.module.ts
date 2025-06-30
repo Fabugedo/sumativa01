@@ -32,6 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./mis-reservas/mis-reservas.module').then( m => m.MisReservasPageModule)
   }
 
+
 ];
 
 @NgModule({

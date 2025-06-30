@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -21,12 +20,13 @@ export class DatosPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private navCtrl: NavController,
-    private databaseService: DatabaseService // <-- INYECTA TU SERVICE DE CRUD
+    private databaseService: DatabaseService
   ) {}
 
   ngOnInit() {
     this.datosForm = this.fb.group({
       nombreNovia:     ['', [Validators.required, Validators.minLength(3)]],
+      email:           ['', [Validators.required, Validators.email]], // <--- Editable y simple
       fechaMatrimonio: [null, [Validators.required, this.fechaNoPasada]],
       tocado:          [null, Validators.required],
       usarAros:        [false],
@@ -59,24 +59,24 @@ export class DatosPage implements OnInit {
       return;
     }
 
-    const vals = this.datosForm.value;
+    const vals = this.datosForm.value; // <-- value (no getRawValue), porque nada está deshabilitado
     const precioTocado = vals.tocado.valor;
     const precioAros   = vals.usarAros ? this.obtenerPrecioAros(vals.estiloAros) : 0;
     const total        = precioTocado + precioAros;
 
-    // --- ARMAR OBJETO RESERVA CON LOS NOMBRES QUE ESPERA LA BD ---
     const reserva = {
       nombreNovia: vals.nombreNovia,
-      fechaBoda: vals.fechaMatrimonio, // Debe coincidir con el campo de tu tabla
+      email: vals.email,
+      fechaBoda: vals.fechaMatrimonio,
       tipoTocado: vals.tocado ? vals.tocado.nombre : '',
-      coords: '', // Puedes integrar después
-      foto: '',   // Puedes integrar después
+      coords: '',
+      foto: '',
       total
     };
 
     try {
       await this.databaseService.addReserva(reserva);
-      this.datosForm.reset(); // Limpia el formulario si quieres permitir múltiples reservas
+      this.datosForm.reset();
       this.navCtrl.navigateForward('/mis-reservas');
     } catch (error) {
       console.error('Error guardando reserva:', error);
