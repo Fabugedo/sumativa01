@@ -69,6 +69,7 @@ export class DatosPage implements OnInit {
       email: vals.email,
       fechaBoda: vals.fechaMatrimonio,
       tipoTocado: vals.tocado ? vals.tocado.nombre : '',
+      tipoAro: vals.usarAros ? this.obtenerNombreAro(vals.estiloAros) : null,
       coords: '',
       foto: '',
       total
@@ -101,4 +102,16 @@ export class DatosPage implements OnInit {
       default:         return 0;
     }
   }
+  private obtenerNombreAro(estilo: string): string {
+    switch (estilo) {
+      case 'perlas':   return 'Perlas';
+      case 'hojas':    return 'Hojas';
+      case 'cristal':  return 'Cristal';
+      case 'florales': return 'Florales';
+      default:         return '';
+    }
+  }
+
+
+
 }

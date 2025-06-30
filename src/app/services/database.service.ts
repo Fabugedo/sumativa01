@@ -14,7 +14,7 @@ export class DatabaseService {
 
 
     await this.db.execute(`
-      DROP TABLE IF EXISTS reservas;
+
 
       CREATE TABLE reservas (
                               id INTEGER PRIMARY KEY AUTOINCREMENT,
