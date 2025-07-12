@@ -14,7 +14,7 @@ export class LoginPage {
   constructor(private router: Router) {}
 
   iniciarSesion() {
-    // Con el form invalid deshabilitado, ya sabes que usuario y pass cumplen pattern
+
     console.log('usuario ->', this.usuario);
     console.log('contraseña ->', this.contrasena);
     this.router.navigate(['/datos']);

@@ -48,7 +48,7 @@ export class ConfirmarArriendoPage implements OnInit {
         lng: position.coords.longitude
       };
 
-      // Espera a que Angular actualice el DOM (clave)
+
       await Promise.resolve();
       this.cdr.detectChanges();
 
