@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="bohemia">
+    <ion-title>Mis Reservas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="bienvenida" *ngIf="reservas.length > 0">
+    <h2>¡Hola, {{ reservas[0].nombreNovia }}!</h2>
+    <p>Estas son tus reservas activas. Acá puedes cambiar el nombre o eliminar tu reservación.</p>
+  </div>
+
+  <ion-list *ngIf="!cargando && reservas.length > 0">
+    <ion-item *ngFor="let r of reservas">
+      <ion-label>
+        <h2>{{ r.nombreNovia }}</h2>
+        <p>
+          {{ r.fechaBoda | date:'longDate' }}<br>
+          Tocado: {{ r.tipoTocado }}<br>
+          <span *ngIf="r.tipoAro">Aros: {{ r.tipoAro }}<br></span>
+          Total: ${{ r.total | number:'1.0-0' }}
+        </p>
+      </ion-label>
+
+      <ion-button fill="clear" color="danger" (click)="eliminarReserva(r.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" color="tertiary" (click)="editarReserva(r)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="!cargando && reservas.length === 0" class="texto-sin-reservas mensaje-centrado">
+    <p>No hay reservas registradas.</p>
+    <p><strong>¡Haz clic en “Agregar Nueva Reserva” para crear tu primera reserva!</strong></p>
+  </div>
+
+  <ion-button expand="block" color="bohemia" (click)="volverLogin()">
+    Volver al Inicio
+  </ion-button>
+  <ion-button
+    expand="block"
+    color="bohemia"
+    class="boton-resumen"
+    [disabled]="reservas.length === 0"
+    (click)="irAConfirmarArriendo()">
+    Confirmar tu pedido y pasar a facturación
+  </ion-button>
+
+  <!-- LOGO SIEMPRE PRESENTE, AL FINAL -->
+  <div class="logo-contenedor">
+    <img src="assets/images/logo-bohemia.jpg"
+         alt="Bohemia Tocados y Accesorios"
+         class="logo-bohemia" />
+  </div>
+</ion-content>
+
