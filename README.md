@@ -1,4 +1,4 @@
-🚀 Versión 3.0 – Cambios y mejoras implementados
+# 🚀 Versión 3.0 – Cambios y mejoras realizadas
 
 La versión 3.0 consolida el ciclo de desarrollo de Bohemia App, incorporando pruebas automatizadas, preparación para distribución y mejores prácticas de seguridad y documentación técnica.
 🆕 Novedades de la versión 3.0
