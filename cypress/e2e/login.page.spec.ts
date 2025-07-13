@@ -36,12 +36,11 @@ describe('Login – Bohemia App', () => {
   });
 
 
-  // EXTRA: Test de login exitoso (ajusta el usuario/contraseña válidos si tienes lógica)
+
   it('Permite login con credenciales válidas', () => {
     cy.get('ion-input[name="usuario"] input').type('Fabian');
     cy.get('ion-input[name="contrasena"] input').type('Clave123');
     cy.get('ion-button[type="submit"]').should('not.be.disabled').click();
-    // Verifica que navega a la página de datos (ajusta según tu routing)
     cy.url().should('include', '/datos');
   });
 
