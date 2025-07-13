@@ -21,6 +21,12 @@ La versión 3.0 consolida el ciclo de desarrollo de Bohemia App, incorporando pr
 - 🗂️ **Buenas prácticas de estructura y mantenimiento:**  
   Estructuración clara de carpetas (código fuente, pruebas, firma, builds), y refuerzo de las validaciones y protección de rutas críticas.
 
+## 🛠️ Tecnologías utilizadas en la versión 3.0
+
+- **WebStorm** (IDE principal para desarrollo Angular/Ionic)
+- **Android Studio** (compilación, generación y firma de APK/AAB)
+- **Cypress** (automatización de pruebas unitarias y E2E)
+
 ---
 
 # 🚀 Versión 2.0 – Funcionalidades Avanzadas Bohemia App
