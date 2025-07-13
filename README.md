@@ -1,3 +1,23 @@
+🚀 Versión 3.0 – Cambios y mejoras implementados
+
+La versión 3.0 consolida el ciclo de desarrollo de Bohemia App, incorporando pruebas automatizadas, preparación para distribución y mejores prácticas de seguridad y documentación técnica.
+🆕 Novedades de la versión 3.0
+
+    ✅ Pruebas unitarias y E2E con Cypress:
+    Se diseñaron y ejecutaron pruebas unitarias en el módulo de Login, verificando validación de campos, estados del botón de envío y el flujo de autenticación. Además, se automatizó el flujo End-to-End desde el login hasta la sección de reservas, validando la integración y respuesta de los componentes principales.
+
+    📦 Preparación y generación de artefactos para distribución:
+    Compilación y generación de APK y App Bundle (.aab) en Android Studio, asegurando compatibilidad con dispositivos físicos y emuladores Android.
+
+    🔏 Firma digital para publicación:
+    Proceso de firma digital implementado mediante archivo .jks, cumpliendo los estándares de seguridad requeridos para Google Play Store y entornos de distribución oficiales.
+
+    📝 Mejoras en documentación y trazabilidad:
+    Registro detallado del proceso de pruebas, resultados y limitaciones encontradas con SQLite/emulación en entorno web. Se agregaron capturas y evidencia del proceso de firma y build final, dejando trazabilidad completa del ciclo de entrega.
+
+    🗂️ Buenas prácticas de estructura y mantenimiento:
+    Estructuración clara de carpetas (código fuente, pruebas, firma, builds), y refuerzo de las validaciones y protección de rutas críticas.
+
 # 🚀 Versión 2.0 – Funcionalidades Avanzadas Bohemia App
 
 **¡Ahora Bohemia App integra características avanzadas y recursos nativos para una experiencia móvil completa y profesional!**
