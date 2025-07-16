@@ -24,122 +24,125 @@
     class="datos-lottie">
   </lottie-player>
 
-  <!-- Formulario reactivo -->
-  <form [formGroup]="datosForm" (ngSubmit)="guardarDatos()">
+  <!-- Formulario dentro de wrapper centrado -->
+  <div class="form-wrapper">
+    <form [formGroup]="datosForm" (ngSubmit)="guardarDatos()">
 
-    <!-- Nombre -->
-    <ion-item>
-      <ion-label position="floating">Nombre de la novia</ion-label>
-      <ion-input formControlName="nombreNovia"></ion-input>
-    </ion-item>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('nombreNovia')?.touched && datosForm.get('nombreNovia')?.errors?.['required']">
-      El nombre es obligatorio.
-    </ion-note>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('nombreNovia')?.touched && datosForm.get('nombreNovia')?.errors?.['minlength']">
-      Mínimo 3 caracteres.
-    </ion-note>
+      <!-- Nombre -->
+      <ion-item class="bohemia-input">
+        <ion-label position="floating">Nombre de la novia</ion-label>
+        <ion-input formControlName="nombreNovia"></ion-input>
+      </ion-item>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('nombreNovia')?.touched && datosForm.get('nombreNovia')?.errors?.['required']">
+        El nombre es obligatorio.
+      </ion-note>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('nombreNovia')?.touched && datosForm.get('nombreNovia')?.errors?.['minlength']">
+        Mínimo 3 caracteres.
+      </ion-note>
 
-    <!-- Email -->
-    <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input formControlName="email" type="email"></ion-input>
-    </ion-item>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['required']">
-      El correo es obligatorio.
-    </ion-note>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['email']">
-      Ingresa un correo válido.
-    </ion-note>
+      <!-- Email -->
+      <ion-item class="bohemia-input">
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['required']">
+        El correo es obligatorio.
+      </ion-note>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('email')?.touched && datosForm.get('email')?.errors?.['email']">
+        Ingresa un correo válido.
+      </ion-note>
 
-    <!-- Fecha -->
-    <div class="mat-datepicker-wrapper">
-      <mat-form-field appearance="fill">
-        <mat-label>Fecha del matrimonio</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaMatrimonio" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <p class="error"
-         *ngIf="datosForm.get('fechaMatrimonio')?.touched
-             && datosForm.get('fechaMatrimonio')?.errors?.['required']">
-        Selecciona una fecha.
-      </p>
-      <p class="error"
-         *ngIf="datosForm.get('fechaMatrimonio')?.touched
-             && datosForm.get('fechaMatrimonio')?.errors?.['pasada']">
-        La fecha no puede ser anterior a hoy.
-      </p>
-    </div>
+      <!-- Fecha -->
+      <div class="mat-datepicker-wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha del matrimonio</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fechaMatrimonio" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <p class="error"
+           *ngIf="datosForm.get('fechaMatrimonio')?.touched
+               && datosForm.get('fechaMatrimonio')?.errors?.['required']">
+          Selecciona una fecha.
+        </p>
+        <p class="error"
+           *ngIf="datosForm.get('fechaMatrimonio')?.touched
+               && datosForm.get('fechaMatrimonio')?.errors?.['pasada']">
+          La fecha no puede ser anterior a hoy.
+        </p>
+      </div>
 
-    <!-- Tocado -->
-    <ion-item>
-      <ion-label>Estilo de tocado</ion-label>
-      <ion-select formControlName="tocado" placeholder="Selecciona un tocado">
-        <ion-select-option
-          *ngFor="let t of tocadosDisponibles"
-          [value]="t">
-          {{ t.nombre }} – ${{ t.valor }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('tocado')?.touched && datosForm.get('tocado')?.errors?.['required']">
-      Debes elegir un tocado.
-    </ion-note>
+      <!-- Tocado -->
+      <ion-item class="bohemia-input">
+        <ion-label>Estilo de tocado</ion-label>
+        <ion-select formControlName="tocado" placeholder="Selecciona un tocado">
+          <ion-select-option
+            *ngFor="let t of tocadosDisponibles"
+            [value]="t">
+            {{ t.nombre }} – ${{ t.valor }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('tocado')?.touched && datosForm.get('tocado')?.errors?.['required']">
+        Debes elegir un tocado.
+      </ion-note>
 
-    <!-- Aros -->
-    <ion-item>
-      <ion-label>¿Deseas usar aros?</ion-label>
-      <ion-toggle formControlName="usarAros"></ion-toggle>
-    </ion-item>
-    <ion-item *ngIf="datosForm.get('usarAros')?.value">
-      <ion-label>Estilo de aros</ion-label>
-      <ion-select formControlName="estiloAros" placeholder="Selecciona un estilo">
-        <ion-select-option value="perlas">Perlas – $18.000</ion-select-option>
-        <ion-select-option value="hojas">Hojas – $15.000</ion-select-option>
-        <ion-select-option value="cristal">Cristal – $16.000</ion-select-option>
-        <ion-select-option value="florales">Florales – $16.000</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-note color="danger"
-              *ngIf="datosForm.get('estiloAros')?.touched && datosForm.get('estiloAros')?.errors?.['required']">
-      Selecciona un estilo de aros.
-    </ion-note>
+      <!-- Aros -->
+      <ion-item class="bohemia-input">
+        <ion-label>¿Deseas usar aros?</ion-label>
+        <ion-toggle formControlName="usarAros"></ion-toggle>
+      </ion-item>
 
-    <!-- Botones de acción en grid -->
-    <div class="boton-wrapper">
-      <ion-button
-        type="button"
-        expand="block"
-        color="bohemia"
-        (click)="verCatalogo()">
-        Ver Catálogo
-      </ion-button>
+      <ion-item *ngIf="datosForm.get('usarAros')?.value" class="bohemia-input">
+        <ion-label>Estilo de aros</ion-label>
+        <ion-select formControlName="estiloAros" placeholder="Selecciona un estilo">
+          <ion-select-option value="perlas">Perlas – $18.000</ion-select-option>
+          <ion-select-option value="hojas">Hojas – $15.000</ion-select-option>
+          <ion-select-option value="cristal">Cristal – $16.000</ion-select-option>
+          <ion-select-option value="florales">Florales – $16.000</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note color="danger"
+                *ngIf="datosForm.get('estiloAros')?.touched && datosForm.get('estiloAros')?.errors?.['required']">
+        Selecciona un estilo de aros.
+      </ion-note>
 
-      <ion-button
-        type="submit"
-        expand="block"
-        color="bohemia"
-        [disabled]="datosForm.invalid">
-        Guardar y continuar
-      </ion-button>
+      <!-- Botones -->
+      <div class="boton-wrapper">
+        <ion-button
+          type="button"
+          expand="block"
+          color="bohemia"
+          (click)="verCatalogo()">
+          Ver Catálogo
+        </ion-button>
 
-      <ion-button
-        type="button"
-        expand="block"
-        color="bohemia"
-        class="full"
-        (click)="volverLogin()">
-        Volver al Login
-      </ion-button>
-    </div>
-  </form>
+        <ion-button
+          type="submit"
+          expand="block"
+          color="bohemia"
+          [disabled]="datosForm.invalid">
+          Guardar y continuar
+        </ion-button>
 
-  <!-- Imagen de ejemplo al final -->
+        <ion-button
+          type="button"
+          expand="block"
+          color="bohemia"
+          class="full"
+          (click)="volverLogin()">
+          Volver al Login
+        </ion-button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Imagen decorativa -->
   <img
     src="assets/images/ejemplo-tocado.jpeg"
     alt="Ejemplo tocado"
