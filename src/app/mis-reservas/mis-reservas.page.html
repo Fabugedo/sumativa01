@@ -1,10 +1,12 @@
 <ion-header>
-  <ion-toolbar color="bohemia">
-    <ion-title>Mis Reservas</ion-title>
+  <ion-toolbar color="bohemia" class="header-elegante">
+    <ion-title class="titulo-bohemia">
+      Bohemia Tocados y Accesorios
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="fondo-elegante">
   <div class="bienvenida" *ngIf="reservas.length > 0">
     <h2>¡Hola, {{ reservas[0].nombreNovia }}!</h2>
     <p>Estas son tus reservas activas. Acá puedes cambiar el nombre o eliminar tu reservación.</p>
@@ -31,28 +33,29 @@
     </ion-item>
   </ion-list>
 
-  <div *ngIf="!cargando && reservas.length === 0" class="texto-sin-reservas mensaje-centrado">
+  <div *ngIf="!cargando && reservas.length === 0" class="texto-sin-reservas">
     <p>No hay reservas registradas.</p>
     <p><strong>¡Haz clic en “Agregar Nueva Reserva” para crear tu primera reserva!</strong></p>
   </div>
 
-  <ion-button expand="block" color="bohemia" (click)="volverLogin()">
-    Volver al Inicio
-  </ion-button>
   <ion-button
     expand="block"
-    color="bohemia"
-    class="boton-resumen"
+    class="boton-bohemia"
+    (click)="volverLogin()">
+    Volver al Inicio
+  </ion-button>
+
+  <ion-button
+    expand="block"
+    class="boton-bohemia"
     [disabled]="reservas.length === 0"
     (click)="irAConfirmarArriendo()">
     Confirmar tu pedido y pasar a facturación
   </ion-button>
 
-  <!-- LOGO SIEMPRE PRESENTE, AL FINAL -->
   <div class="logo-contenedor">
     <img src="assets/images/logo-bohemia.jpg"
          alt="Bohemia Tocados y Accesorios"
          class="logo-bohemia" />
   </div>
 </ion-content>
-

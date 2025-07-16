@@ -8,7 +8,9 @@
 
 <ion-content class="fondo-elegante push-content">
   <div class="catalogo-container">
-    <h2 class="titulo-catalogo">Catálogo Bohemia</h2>
+    <h2 class="titulo-catalogo">
+      Catálogo Bohemia
+    </h2>
 
     <ion-card *ngFor="let producto of productos" class="producto-card">
       <img [src]="producto.imagen" alt="{{ producto.nombre }}" />
@@ -21,7 +23,9 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <div class="boton-volver-wrapper">
-    <ion-button expand="block" color="bohemia" (click)="volverDatos()">Volver</ion-button>
+
+  <div class="boton-wrapper">
+    <ion-button expand="block" class="boton-secundario full" (click)="volverDatos()">Volver</ion-button>
   </div>
+
 </ion-content>
