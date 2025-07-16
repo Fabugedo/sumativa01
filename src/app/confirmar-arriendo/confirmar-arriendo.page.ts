@@ -5,6 +5,7 @@ import { ApiService } from '../services/api/api.service';
 import { tomarFoto } from '../services/cam/cam.service';
 import { LoadingController, NavController } from '@ionic/angular';
 import { DatabaseService } from '../services/database.service';
+
 declare var google: any;
 
 @Component({
@@ -28,7 +29,7 @@ export class ConfirmarArriendoPage implements OnInit {
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private databaseService: DatabaseService,
-    private cdr: ChangeDetectorRef    // <-- NUEVO
+    private cdr: ChangeDetectorRef
   ) {}
 
   async ngOnInit() {
@@ -48,7 +49,6 @@ export class ConfirmarArriendoPage implements OnInit {
         lng: position.coords.longitude
       };
 
-
       await Promise.resolve();
       this.cdr.detectChanges();
 
@@ -61,10 +61,12 @@ export class ConfirmarArriendoPage implements OnInit {
         this.errorUbicacion = 'Google Maps no está cargado todavía. Espera unos segundos e intenta de nuevo.';
         return;
       }
+
       this.map = new google.maps.Map(mapEle, {
         center: this.coords,
         zoom: 15
       });
+
       this.marker = new google.maps.Marker({
         position: this.coords,
         map: this.map,
@@ -98,17 +100,21 @@ export class ConfirmarArriendoPage implements OnInit {
       const order = {
         ...this.datos,
         coords: this.coords,
-        photo: this.photoBase64,
+        foto: this.photoBase64,
         total: this.datos.total
       };
+
+      // Guardar en SQLite localmente
+      await this.databaseService.addReserva(order);
+      console.log('Reserva guardada con coords:', order.coords);
+
+      // Intentar enviar a la API
       try {
         await this.api.createOrder(order);
-        if (order.id) {
-          await this.databaseService.marcarComoEnviado(order.id);
-        }
-      } catch (error) {
-        // Guardado solo local, ya está en base
+      } catch (apiError) {
+        console.warn('Fallo API, pero reserva local guardada.');
       }
+
       await loading.dismiss();
       await this.navCtrl.navigateRoot('/gracias');
     } catch (error) {
