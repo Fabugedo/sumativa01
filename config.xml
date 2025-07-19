@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="com.bohemia.tocados"
+        version="3.1.0"
+        xmlns="http://www.w3.org/ns/widgets">
+
+  <name>BohemiaApp</name>
+  <description>Aplicación para arriendo de tocados de matrimonio</description>
+  <author email="fabugedo@gmail.com">Fabrizio Bugedo</author>
+
+  <!-- Acceso general a internet y recursos -->
+  <access origin="*" />
+  <allow-intent href="*" />
+  <allow-navigation href="*" />
+
+  <!-- Preferencias generales -->
+  <preference name="Orientation" value="portrait" />
+  <preference name="ColorScheme" value="light" />
+  <preference name="Fullscreen" value="false" />
+  <preference name="SplashScreenDelay" value="2000" />
+  <preference name="ShowSplashScreenSpinner" value="false" />
+  <preference name="AccessibilityEnabled" value="true" />
+
+  <!-- Preferencias específicas de Android -->
+  <platform name="android">
+    <preference name="android-targetSdkVersion" value="31" />
+    <preference name="android-installLocation" value="auto" />
+  </platform>
+
+  <!-- Este config.xml se utiliza como referencia técnica en proyectos Ionic + Capacitor.
+       No requiere procesamiento activo por Cordova. Todos los plugins son gestionados por Capacitor. -->
+
+</widget>
