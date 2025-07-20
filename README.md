@@ -75,30 +75,42 @@ La versión 2.0 integró recursos nativos y funcionalidades modernas:
 
 ---
 
-## ✨ Características Principales
+✨ Características Principales
 
-- 🧠 **Formulario validado:** nombre, fecha, tipo de tocado.
-- 💍 **Selección opcional de aros.**
-- 🔄 **Enrutamiento entre páginas.**
-- 📦 **Transferencia de datos entre vistas con `DatosService`.**
-- 🎞️ **Animaciones Lottie y `ion-loading`.**
+- 🧠 Formularios validados: Login y datos de la novia (nombre, fecha, correo, tocado).
+- 💍 Selección opcional de aros y estilo.
+- 🔄 Enrutamiento y navegación protegida: Guards y redirecciones según flujo autenticado.
+- 📦 Transferencia y persistencia de datos entre vistas: Servicios personalizados (DatosService) y almacenamiento con SQLite.
+- 🌐 Consumo de API externa: Pedidos enviados a servidor remoto.
+- 🗺️ Mapa interactivo: Visualización y geolocalización del usuario con Google Maps.
+- 📸 Toma de fotografía y carga de imagen: Plugins nativos de cámara.
+- 🎞️ Animaciones avanzadas: Lottie, ion-loading, transiciones y feedback visual.
+- 🧪 Pruebas automatizadas: Cypress (unitarias y E2E), con cobertura desde login hasta confirmación de reserva.
+- 📝 Documentación técnica completa: Estrategia de pruebas, configuración de emulación, metadatos y build.
 
----
+📱 Páginas Incluidas
 
-## 📱 Páginas Incluidas
+- Login Page: Inicio de sesión validado (campos y flujo autenticado).
+- Datos Page: Formulario reactivo para ingreso y validación de datos de la novia, selección de fecha (Angular Material Datepicker), tocado y aros.
+- Confirmar Arriendo Page: Resumen de reserva, visualización de ubicación, toma de foto, mapa y animación de carga.
+- Mis Reservas Page: Listado, edición y eliminación de reservas guardadas en SQLite.
+- Gracias Page: Mensaje final animado, número de seguimiento, datos de contacto.
 
-1. **Login Page** – Inicio de sesión validado.
-2. **Datos Page** – Datos de la novia y selección de tocado.
-3. **Confirmar Arriendo Page** – Resumen y confirmación animada.
-4. **Gracias Page** – Cierre con mensaje y contacto ficticio.
+🔧 Tecnologías y librerías usadas (versión final)
 
----
-
-## 🔧 Tecnologías Usadas
-
-- **Ionic Framework v8**
-- **Angular v19**
-- **Capacitor v7.2.0**
-- **Angular Material**
-- **@lottiefiles/lottie-player**
-- **SCSS + Variables CSS personalizadas**
+- Ionic Framework v8
+- Angular v19
+- Capacitor v7.2.0
+- Angular Material (MatDatepicker, formularios, validaciones)
+- @capacitor-community/sqlite (persistencia local)
+- @capacitor-community/http (consumo de API REST externa)
+- @capacitor/geolocation (ubicación GPS)
+- @capacitor/camera (foto de seguridad)
+- Google Maps API (mapas interactivos)
+- @lottiefiles/lottie-player (animaciones SVG)
+- ion-loading (carga y feedback visual)
+- SCSS + Variables CSS personalizadas
+- NgModel y ReactiveFormsModule (vinculación y validación de formularios)
+- CUSTOM_ELEMENTS_SCHEMA (soporte de web components)
+- Cypress (pruebas unitarias y E2E automatizadas)
+- Servicios personalizados (DatosService, etc.)
